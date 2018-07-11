@@ -16,31 +16,18 @@
         android:orientation="vertical">
 
         <TextView
+            android:textSize="20dp"
+            android:text="Samsung "
             android:id="@+id/text_pModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+
+
+
         <TextView
-            android:id="@+id/text_pProcessor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/text_pRam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/text_pOs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/text_pCamera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/text_pDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
+            android:textSize="24dp"
+            android:text="2000"
             android:id="@+id/text_pPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

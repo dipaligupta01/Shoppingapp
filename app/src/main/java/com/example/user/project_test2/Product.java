@@ -3,7 +3,7 @@ package com.example.user.project_test2;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    private int pImage;
+    private String pImage;
     private String pModel;
     private String pProcessor;
     private String pRam;
@@ -11,12 +11,13 @@ public class Product implements Serializable {
     private String pCamera;
     private String pDisplay;
     private String pPrice;
+    private int catId;
 
-    public int getpImage() {
+    public String getpImage() {
         return pImage;
     }
 
-    public void setpImage(int pImage) {
+    public void setpImage(String pImage) {
         this.pImage = pImage;
     }
 
@@ -74,5 +75,13 @@ public class Product implements Serializable {
 
     public void setpPrice(String pPrice) {
         this.pPrice = pPrice;
+    }
+
+    public int getCatId() {
+        return catId;
+    }
+
+    public void setCatId(int catId) {
+        this.catId = catId;
     }
 }

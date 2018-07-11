@@ -19,13 +19,12 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomepageActivity" />
-        <activity android:name=".CongratsActivity"></activity>
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".CongratsActivity" />
+        <activity android:name=".DetailActivity" />
         <activity android:name=".EnlargedProduct" />
-        <activity android:name=".PaymentActivity">
-
-        </activity>
+        <activity android:name=".PaymentActivity"></activity>
         <activity android:name=".CartActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

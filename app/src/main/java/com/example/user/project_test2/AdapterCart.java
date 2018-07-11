@@ -13,12 +13,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHolder> {
-
+public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
     Context context;
-    ArrayList<Category> list;
+    ArrayList<Cart> list;
 
-    public AdapterCategory(Context context, ArrayList<Category> list) {
+    public AdapterCart(Context context, ArrayList<Cart> list) {
         this.context = context;
         this.list = list;
     }
@@ -26,16 +25,17 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(context).inflate(R.layout.row_category_adapter, viewGroup, false);
+        View v = LayoutInflater.from(context).inflate(R.layout.row_cart_adapter, viewGroup, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Category category = list.get(i);
-        viewHolder.imageView.setImageResource(category.getCatImage());
-        viewHolder.textViewCategory.setText(category.getCatName());
+        Cart Cart = list.get(i);
+        viewHolder.imageView.setImageResource(Cart.getpImage());
+        viewHolder.textViewmodel.setText(Cart.getpModel());
+        viewHolder.textViewprice.setText(Cart.getpPrice());
     }
 
     @Override
@@ -46,26 +46,25 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
-        TextView textViewCategory;
+        TextView textViewprice,textViewmodel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
-            textViewCategory = itemView.findViewById(R.id.text_view_category);
+             textViewmodel= itemView.findViewById(R.id.text_view_model);
+             textViewprice=itemView.findViewById(R.id.text_view_price);
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             Toast.makeText(context, "CLicked", Toast.LENGTH_SHORT).show();
-            Category category= list.get(getAdapterPosition());
-            Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra("CAT_ID", category.getCatId());
-            intent.putExtra("CAT_NAME", category.getCatName());
-            context.startActivity(intent);
+
+            context.startActivity(new Intent(context, PaymentActivity.class));
         }
     }
 
 }
+
 
 

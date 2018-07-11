@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHolder> {
@@ -33,14 +35,13 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Product product = list.get(i);
-        viewHolder.imageView.setImageResource(product.getpImage());
+        //viewHolder.imageView.setImageResource(product.getpImage());
         viewHolder.textPModel.setText(product.getpModel());
-        viewHolder.textPProcessor.setText(product.getpProcessor());
-        viewHolder.textPRam.setText(product.getpRam());
-        viewHolder.textPOs.setText(product.getpOs());
-        viewHolder.textPCamera.setText(product.getpCamera());
-        viewHolder.textPDisplay.setText(product.getpDisplay());
+
         viewHolder.textPPrice.setText(product.getpPrice());
+
+        Picasso.with(context).load(Config.IMG_URL+product.getpImage()).into(viewHolder.imageView);
+
 
 
     }
@@ -48,6 +49,11 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void setData(ArrayList<Product> filterList) {
+        list = filterList;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -59,11 +65,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
             textPModel = itemView.findViewById(R.id.text_pModel);
-            textPProcessor = itemView.findViewById(R.id.text_pProcessor);
-            textPRam = itemView.findViewById(R.id.text_pRam);
-            textPOs = itemView.findViewById(R.id.text_pOs);
-            textPCamera = itemView.findViewById(R.id.text_pCamera);
-            textPDisplay = itemView.findViewById(R.id.text_pDisplay);
+
             textPPrice = itemView.findViewById(R.id.text_pPrice);
 
             itemView.setOnClickListener(this);

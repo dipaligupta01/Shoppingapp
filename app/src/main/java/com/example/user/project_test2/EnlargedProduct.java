@@ -6,15 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class
 EnlargedProduct extends AppCompatActivity implements View.OnClickListener {
     Button buttonBuy, buttonAdd;
+    ImageView imageView;
     TextView textViewPModel, textViewPDisplay, textViewPOs, textViewPRam, textViewPProcessor, textViewPCamera, textViewPPrice;
 
     DatabaseReference databaseReference;
@@ -36,6 +39,12 @@ EnlargedProduct extends AppCompatActivity implements View.OnClickListener {
 
         String id = databaseReference.push().getKey();
         databaseReference.child(id).setValue(product);
+
+
+
+        imageView=findViewById(R.id.image_product);
+
+        Picasso.with(this).load(Config.IMG_URL+product.getpImage()).into(imageView);
 
         textViewPModel = findViewById(R.id.text_view_model);
         textViewPRam = findViewById(R.id.text_view_ram);

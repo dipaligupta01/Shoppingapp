@@ -10,7 +10,8 @@
         android:background="@color/colorPrimaryDark"
         android:orientation="vertical">
 
-        <TextView
+        <EditText
+            android:focusable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -19,7 +20,7 @@
             android:drawableLeft="@drawable/ic_search_black_24dp"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="Search for product" />
+            android:hint="Search for product" />
 
 
     </LinearLayout>

@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -18,6 +22,8 @@ public class HomepageActivity extends AppCompatActivity {
     ArrayList<Category> list = new ArrayList<>();
     AdapterCategory adapterCategory;
 
+    FirebaseUser firebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +32,16 @@ public class HomepageActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Personal Store");
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser == null) {
+            startActivity(new Intent(HomepageActivity.this, LoginActivity.class));
+        }
+
         generateData();
 
         recyclerView = findViewById(R.id.recycle_view);
         adapterCategory = new AdapterCategory(this, list);
-        layoutManager = new GridLayoutManager(this, 2);
+        layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setAdapter(adapterCategory);
         recyclerView.setLayoutManager(layoutManager);
     }
@@ -40,17 +51,21 @@ public class HomepageActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
     }
-//    public boolean onOptionsItemSelected(Menu item){
-//        switch (item.getItem(item)){
-//            case R.id.action_profile:
-//                Toast.makeText(this, "Profile Selected", Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.action_cart:
-//                Intent intent=new Intent(HomepageActivity.this,CartActivity.class);
-//                startActivity(intent);
-//                break;
-//        }
-//    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                startActivity(new Intent(HomepageActivity.this,ProfileActivity.class));
+                break;
+            case R.id.action_cart:
+                Intent intent=new Intent(HomepageActivity.this,CartActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
 
     private void generateData() {
         Category category;
