@@ -33,8 +33,6 @@ EnlargedProduct extends AppCompatActivity implements View.OnClickListener {
         Intent intent = getIntent();
         Product product = (Product) intent.getSerializableExtra("PRODUCT");
 
-        Toast.makeText(this, "" + product.getpModel(), Toast.LENGTH_SHORT).show();
-
         databaseReference = FirebaseDatabase.getInstance().getReference("cart");
 
         String id = databaseReference.push().getKey();

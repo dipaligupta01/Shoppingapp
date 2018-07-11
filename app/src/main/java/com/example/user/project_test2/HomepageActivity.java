@@ -96,7 +96,7 @@ public class HomepageActivity extends AppCompatActivity {
         list.add(category);
 
         category = new Category();
-        category.setCatImage(R.drawable.oopo);
+        category.setCatImage(R.drawable.oppo);
         category.setCatId(6);
         list.add(category);
     }

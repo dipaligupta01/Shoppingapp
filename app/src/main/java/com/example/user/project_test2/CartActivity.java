@@ -80,8 +80,7 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
                 for(DataSnapshot cartData : dataSnapshot.getChildren()){
                     Product product= cartData.getValue(Product.class);
                     list.add(product);
-                    //Toast.makeText(CartActivity.this, ""+product.getpModel().toString(), Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(CartActivity.this, ""+cartData.getValue(Cart.class).getpModel(), Toast.LENGTH_SHORT).show();
+
                 }
                 adapterCart.setData(list);
             }

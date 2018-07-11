@@ -13,10 +13,20 @@
         android:textSize="30dp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/congrats"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/check" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/image_view"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:padding="30dp"
         android:text="Your order is confirmed."
         android:textColor="#000"
@@ -31,12 +41,12 @@
         android:padding="20dp" />
 
     <Button
+        android:id="@+id/button_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Continue Shopping"
         android:background="@color/colorPrimaryDark"
+        android:text="Continue Shopping"
         android:textColor="#fff"
-        android:textSize="20dp"
-        android:id="@+id/button_continue"/>
+        android:textSize="20dp" />
 </RelativeLayout>

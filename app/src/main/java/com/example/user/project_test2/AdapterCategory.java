@@ -57,7 +57,6 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, "CLicked", Toast.LENGTH_SHORT).show();
             Category category= list.get(getAdapterPosition());
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("CAT_ID", category.getCatId());

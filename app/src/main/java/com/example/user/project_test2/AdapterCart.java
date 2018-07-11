@@ -35,7 +35,6 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Product product = list.get(i);
-        // viewHolder.imageView.setImageResource(Cart.getpImage());
         viewHolder.textViewmodel.setText(product.getpModel());
         viewHolder.textViewprice.setText(product.getpPrice());
 
@@ -67,7 +66,7 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, "CLicked", Toast.LENGTH_SHORT).show();
+
 
             context.startActivity(new Intent(context, PaymentActivity.class));
         }
