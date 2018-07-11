@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="Select your PAYMENT option :"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp">
+
+        <RadioButton
+            android:id="@+id/radio_button_debit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Debit/Credit card"
+            android:textColor="#000"
+            android:textSize="30dp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_upi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="UPI"
+            android:textColor="#000"
+            android:textSize="30dp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_netbanking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Net Banking"
+            android:textColor="#000"
+            android:textSize="30dp" />
+
+        <RadioButton
+            android:id="@+id/radio_button_cod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Cash On Delivery"
+            android:textColor="#000"
+            android:textSize="30dp" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:id="@+id/button_pay"
+        android:background="@color/colorPrimaryDark"
+        android:text="Continue to Pay"
+        android:textColor="#fff"
+        android:textSize="20dp" />
+</LinearLayout>
