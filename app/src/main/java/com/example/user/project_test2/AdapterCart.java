@@ -11,13 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
     Context context;
-    ArrayList<Cart> list;
+    ArrayList<Product> list;
 
-    public AdapterCart(Context context, ArrayList<Cart> list) {
+    public AdapterCart(Context context, ArrayList<Product> list) {
         this.context = context;
         this.list = list;
     }
@@ -32,10 +34,12 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Cart Cart = list.get(i);
-        viewHolder.imageView.setImageResource(Cart.getpImage());
-        viewHolder.textViewmodel.setText(Cart.getpModel());
-        viewHolder.textViewprice.setText(Cart.getpPrice());
+        Product product = list.get(i);
+        // viewHolder.imageView.setImageResource(Cart.getpImage());
+        viewHolder.textViewmodel.setText(product.getpModel());
+        viewHolder.textViewprice.setText(product.getpPrice());
+
+        Picasso.with(context).load(Config.IMG_URL+product.getpImage()).into(viewHolder.imageView);
     }
 
     @Override
@@ -43,16 +47,21 @@ public class AdapterCart extends RecyclerView.Adapter<AdapterCart.ViewHolder> {
         return list.size();
     }
 
+    public void setData(ArrayList<Product> mlist) {
+        list = mlist;
+        notifyDataSetChanged();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
-        TextView textViewprice,textViewmodel;
+        TextView textViewprice, textViewmodel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view);
-             textViewmodel= itemView.findViewById(R.id.text_view_model);
-             textViewprice=itemView.findViewById(R.id.text_view_price);
+            textViewmodel = itemView.findViewById(R.id.text_view_model);
+            textViewprice = itemView.findViewById(R.id.text_view_price);
             itemView.setOnClickListener(this);
         }
 

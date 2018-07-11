@@ -22,6 +22,7 @@ public class Cart {
         this.pPrice = pPrice;
     }
 
+
     public int getpImage() {
         return pImage;
     }

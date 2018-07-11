@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,12 +21,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity implements View.OnClickListener{
+
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
+
+    AdapterCart adapterCart;
+
     ImageView imageView;
     TextView textPModel,textPPrice;
     Button buttonConfirm,buttonContinue;
 
     DatabaseReference databaseReference;
-    ArrayList<Cart> list = new ArrayList<>();
+    ArrayList<Product> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,12 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
 
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle("Cart");
+
+        recyclerView = findViewById(R.id.recycle_view);
+        adapterCart = new AdapterCart(this, list);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setAdapter(adapterCart);
+        recyclerView.setLayoutManager(layoutManager);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("cart");
 
@@ -64,10 +78,12 @@ public class CartActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot cartData : dataSnapshot.getChildren()){
-                    Cart cart = (Cart) cartData.getValue();
-                    list.add(cart);
-                    Toast.makeText(CartActivity.this, ""+cart.getpModel(), Toast.LENGTH_SHORT).show();
+                    Product product= cartData.getValue(Product.class);
+                    list.add(product);
+                    //Toast.makeText(CartActivity.this, ""+product.getpModel().toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CartActivity.this, ""+cartData.getValue(Cart.class).getpModel(), Toast.LENGTH_SHORT).show();
                 }
+                adapterCart.setData(list);
             }
 
             @Override
